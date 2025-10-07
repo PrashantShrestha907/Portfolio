@@ -28,6 +28,7 @@ const MenuBox = ({x,y,setWindow,setState,name, data,setData,setBin,bin,setName,s
 
   const handleDelete = (e)=>{
     e.preventDefault();
+    if(typeof window !== undefined){
     const newData = data.filter(item=>item?.name!==name);
      const deleted = data
     .filter(item => item?.name === name)
@@ -38,7 +39,7 @@ const MenuBox = ({x,y,setWindow,setState,name, data,setData,setBin,bin,setName,s
     setData(localStorage.setItem("data",JSON.stringify(newData)));
     const deletedData = [...bin, ...deleted]
     setBin( localStorage.setItem("RecycleBin", JSON.stringify(deletedData)));
-    window.location.reload()
+    window.location.reload()}
   }
 
   return (

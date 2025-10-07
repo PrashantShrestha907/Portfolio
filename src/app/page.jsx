@@ -32,6 +32,7 @@ const page = () => {
 
 
   useEffect(() => {
+    if(typeof window !== undefined){
     const stored = localStorage.getItem("data");
     if (!stored) {
       localStorage.setItem("data", JSON.stringify(dummydata));
@@ -72,7 +73,7 @@ const page = () => {
       localStorage.setItem("bgColor", JSON.stringify({ color: "#3F4565" }));
     } else {
       setColor(JSON.parse(bgColor));
-    }
+    }}
   }, []);
   // useEffect(()=>{
   //   const project = localStorage.getItem("Project");

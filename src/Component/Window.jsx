@@ -52,7 +52,8 @@ const Window = ({
   }, [name]);
 
   useEffect(()=>{
-    setNewFolder(JSON.parse(localStorage.getItem(name)))
+    if(typeof window!== undefined){
+    setNewFolder(JSON.parse(localStorage.getItem(name)))}
   },[])
   
 

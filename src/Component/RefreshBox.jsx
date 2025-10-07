@@ -6,6 +6,7 @@ const RefreshBox = ({ x, y, data,setItems }) => {
 
   const handleNewFolder = (e) => {
     e.preventDefault();
+    if(typeof window !== undefined){
     const formData = new FormData(e.target);
     const lastItem = data[data.length - 1];
     const newSwapyItem = String.fromCharCode(
@@ -27,7 +28,7 @@ const RefreshBox = ({ x, y, data,setItems }) => {
     localStorage.setItem("data", JSON.stringify(newData));
     localStorage.setItem(newItem?.name, JSON.stringify([]))
     setNewfolder(false);
-    window.location.reload();
+    window.location.reload();}
   };
 
   const handleProperties = (e)=>{

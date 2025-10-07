@@ -24,20 +24,22 @@ const RecycleBin = ({ bin, data, setBin, divRefs,setCount}) => {
 
   const handleRestore = (e, name) => {
     e.preventDefault();
+    if(typeof window !== undefined){
     const deleted = bin.filter((item) => item.name !== name);
     setBin(localStorage.setItem("RecycleBin", JSON.stringify(deleted)));
     const final = bin.filter((item) => item.name === name);
     const last = [...data, ...final];
     localStorage.setItem("data", JSON.stringify(last));
-    window.location.reload();
+    window.location.reload();}
   };
 
   const handleDelete = (e, name) => {
     e.preventDefault();
+    if(typeof window !== undefined){
     const final = bin.filter((item) => item.name !== name);
     localStorage.setItem("RecycleBin", JSON.stringify(final));
     localStorage.removeItem(name)
-    window.location.reload();
+    window.location.reload();}
   };
 
   return (
