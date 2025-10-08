@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Window from "../Component/Window"
 import { useRouter } from 'next/navigation';
 
-const MenuBox = ({x,y,setWindow,setState,name, data,setData,setBin,bin,setName,setImage,image,setItems}) => {
+const MenuBox = ({x,y,setWindow,setState,name, data,setData,setBin,bin,image,setItems}) => {
   const router = useRouter();
 
-  const handleOpen = (e)=>{
+   const handleOpen = (e)=>{
    if(name==="Resume/CV"){   
     setItems(prev => [...prev, { name: name, imgPath: image, status: false }]);
     setWindow(true);
@@ -13,6 +13,14 @@ const MenuBox = ({x,y,setWindow,setState,name, data,setData,setBin,bin,setName,s
     e.stopPropagation()
    }else if (name==="Github"){
     router.push("https://github.com/PrashantShrestha907")
+   }else if (name == "SchoolAid"){
+     router.push("https://github.com/PrashantShrestha907/SchoolAid-AI-blog-SIte-")
+   }else if (name == "Internest"){
+     router.push("https://github.com/PrashantShrestha907/Interenest")
+   }else if (name == "FaceGram"){
+     router.push("https://github.com/PrashantShrestha907/FaceGram-Socia-Media-WebSite-")
+   }else if (name == "Attendify"){
+     router.push("https://github.com/PrashantShrestha907/Attendify")
    }
    else{
    setWindow(true);
@@ -22,9 +30,6 @@ const MenuBox = ({x,y,setWindow,setState,name, data,setData,setBin,bin,setName,s
 
   }
  
-
-
-
 
   const handleDelete = (e)=>{
     e.preventDefault();

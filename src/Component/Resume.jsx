@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import handleDragEnd from "../app/Functioncall.js";
 import MenuBox from "./MenuBox.jsx";
-import { useRouter } from "next/router.js";
+import { useRouter } from "next/navigation";
 
 const Resume = ({
   resumeData,
@@ -13,11 +13,14 @@ const Resume = ({
   bin,
   setName,
   setItems,
+  setCurrentIcon,
+  setIconState,
 }) => {
   const [state, setState] = useState(false);
   const [currentIndex, setCurrentIndex] = useState();
   const [x, setX] = useState();
   const [y, setY] = useState();
+  const router = useRouter()
   const handleRightClick = (e, index, item) => {
     e.preventDefault();
     setState(true);
@@ -29,6 +32,23 @@ const Resume = ({
     setCurrentIndex(index);
     e.stopPropagation();
   };
+
+  const handleDoubleClick = (e, icon) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if(icon?.name==="Github"){
+      router.push("https://github.com/PrashantShrestha907")
+    }else{
+    setCurrentIcon(icon);
+    setWindow(true);
+    setState(false);
+    setIconState(false);
+    setName(icon?.name);
+    setImage(icon?.imgPath);
+    }
+  };
+
+    
   useEffect(()=>{
 
     setCount(resumeData?.length);
@@ -63,6 +83,7 @@ const Resume = ({
           onContextMenu={(e) => handleRightClick(e, index, item)}
           draggable={true}
           onDragEnd={(e) => handleDragEnd(e, item, "resume", divRefs)}
+          onDoubleClick={(e)=>handleDoubleClick(e,item)}
          
         >
           <img src={item?.imgPath} alt="" className="h-[2.5rem] w-[2.5rem]" />

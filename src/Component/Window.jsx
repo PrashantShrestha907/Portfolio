@@ -31,6 +31,11 @@ const Window = ({
   setName,
   setColor,
   color,
+  project,
+  setProject,
+  setCurrentIcon,
+  setIconState,
+  setData
 }) => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
@@ -119,7 +124,7 @@ const Window = ({
       <div
         ref={(el) => {
           nodeRef.current = el; 
-          if(isNaN(Number(name))&&name!=="About"&&name!=="Mail"&&name!=="Youtube"&&name!=="MyComputer"&&name!=="Detective"&&name!=="Project"){
+          if(isNaN(Number(name))&&name!=="About"&&name!=="Mail"&&name!=="Youtube"&&name!=="MyComputer"&&name!=="Detective"){
             divRefs.current[name] = el; 
           }else{
             divRefs.current["data"]=el
@@ -252,7 +257,7 @@ const Window = ({
         >
           {name === "RecycleBin" ? (
             <RecycleBin
-              bin={bin}
+              bin={bin}F
               data={data}
               setBin={setBin}
               divRefs={divRefs}
@@ -282,12 +287,29 @@ const Window = ({
               bin={bin}
               setName={setName}
               setItems={setItems}
+              setCurrentIcon={setCurrentIcon}
+              setIconState={setIconState}
             />
           ) : name === "Resume/CV" ? (
             <ResumeCV />
           ) : name === "Properties" ? (
             <Properties setColor={setColor} color={color} />
-          ) : name==="MyComputer" ? <MyComputer/>: name ==="Project"?<Project/>:name==="About"?<About/>:<Newfolder data={newFolder} parentName={name} divRefs={divRefs}/>}
+          ) : name==="MyComputer" ? <MyComputer/>: name ==="Project"?<Project setCount={setCount} project={project} divRefs={divRefs}
+              setWindow={setWindow}
+              setState={setState}
+              setBin={setBin}
+              bin={bin}
+              setName={setName}
+              setItems={setItems}
+              setProject={setProject}
+              />:name==="About"?<About/>:<Newfolder data={newFolder} parentName={name} divRefs={divRefs} setCount={setCount}  setWindow={setWindow}
+              setState={setState}
+              setBin={setBin}
+              bin={bin}
+              setName={setName}
+              setItems={setItems}
+              setCurrentIcon={setCurrentIcon}
+              setIconState={setIconState}/>}
         </div>
         {count > 0 ? (
           <div className="flex gap-1 justify-center items-center ml-1 w-[98.5%]">

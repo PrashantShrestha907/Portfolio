@@ -75,18 +75,50 @@ const page = () => {
       setColor(JSON.parse(bgColor));
     }}
   }, []);
-  // useEffect(()=>{
-  //   const project = localStorage.getItem("Project");
-  //   if(!project){
-  //     localStorage.setItem("Project")
-  //   }else{
-  //     setProject(project)
-  //   }
+  useEffect(()=>{
+    const project = JSON.parse(localStorage.getItem("project"));
+    if(!project){
+      localStorage.setItem("project",JSON.stringify([
+          {
+            id: 10,
+            name: "SchoolAid",
+            imgPath: "SchoolAid.ico",
+            parentName: "project",
+            swapyItem: "t",
+            swapySlot: "t",
+          },
+          {
+            id: 10,
+            name: "Internest",
+            imgPath: "Internest.ico",
+            parentName: "project",
+            swapyItem: "n",
+            swapySlot: "n",
+          },
+           {
+            id: 10,
+            name: "FaceGram",
+            imgPath: "FaceGram.ico",
+            parentName: "project",
+            swapyItem: "na",
+            swapySlot: "na",
+          }, {
+            id: 10,
+            name: "Attendify",
+            imgPath: "Attendify.ico",
+            parentName: "project",
+            swapyItem: "n",
+            swapySlot: "n",
+          },
+        ]))
+    }else{
+      setProject(project)
+    }
     
 
-  // },[])
+  },[])
   useEffect(() => {
-    swapy.current = createSwapy(container.current);
+    swapy.current = createSwapy(container.current); 
   }, [data]);
 
   useEffect(() => {
@@ -237,6 +269,11 @@ const page = () => {
             setName={setName}
             setColor={setColor}
             color={color}
+            project = {project}
+            setProject = {setProject}
+            setCurrentIcon = {setCurrentIcon}
+            setIconState = {setIconState}
+            setData= {setData}
           />
         ))}
         {startClick?<StartMenu setItems={setItems}/>:null}

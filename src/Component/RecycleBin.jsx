@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import handleDragEnd from "../app/Functioncall.js";
 
 const RecycleBin = ({ bin, data, setBin, divRefs,setCount}) => {
@@ -17,8 +17,12 @@ const RecycleBin = ({ bin, data, setBin, divRefs,setCount}) => {
     setCurrentIndex(index);
     e.stopPropagation();
   };
-  setCount(bin.length)
- 
+  useEffect(()=>{
+
+    setCount(bin.length-2)
+   
+  },[])
+  
 
 
 
@@ -52,10 +56,10 @@ const RecycleBin = ({ bin, data, setBin, divRefs,setCount}) => {
       ref={(el) => (divRefs.current["RecycleBin"] = el)}
     >
       {bin &&
-        bin.map((item, index) => (
+        bin.slice(2).map((item, index) => (
           <div
             key={index}
-            className="flex flex-col gap-2 justify-start relative items-center"
+            className="flex flex-col gap-2 items-center relative "
             onContextMenu={(e) => handleRightClick(e, index, item)}
             draggable={true} // Make sure this is explicitly true
             // onDragStart={(e) => {

@@ -7,8 +7,6 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'Google';
-  src: url('/fonts/Minecraftia-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
+  font-family: 'Minecraftia';
+  src: url('/Minecraftia-Regular.ttf') format('truetype');
 }
